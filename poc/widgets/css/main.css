@@ -1,0 +1,17 @@
+
+body {
+	background-color: #e0e0e0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+#canvas1 {border: 10px solid #bee6d9;}
+
+ #widget_1 {
+ 	margin-top: 200px;
+  	margin-left: 100px;
+ }
+ 
+ 
+

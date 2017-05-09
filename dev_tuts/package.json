@@ -1,0 +1,14 @@
+{
+  "name": "dev_tuts",
+  "version": "1.0.0",
+  "description": "my testing area",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diane Dougherty",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}

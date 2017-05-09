@@ -1,0 +1,46 @@
+// get some data from an API
+!function(){
+	var methods = {
+  	init : function(){
+      var xhr = new XMLHttpRequest(),
+          attach = document.querySelectorAll("#attachPoint")
+         
+      this.attach = attach
+      
+      xhr.addEventListener("loadend", function(e){
+      	this.data = JSON.parse(e.target.responseText)
+        this.format()
+      }.bind(this))
+      
+      xhr.open("GET", "https://api.pearson.com/v2/dictionaries/entries?headword=monkey")
+      
+      xhr.send()
+    },
+    format : function(){
+    	// take this.data and format it!
+      this.attach.innerHTML = ""
+      if(this.data){
+        var ul = document.createElement("ul")
+        for(var i=0;i<this.data.results.length;i++){
+          var def = this.data.results[i],
+              li = document.createElement("li"),
+              bold = document.createElement("strong"),
+              span = document.createElement("span")
+          bold.textContent = def.headWord+": "
+          if(def.senses && def.senses.length > 0 && def.senses[0].definition){
+            span.textContent = def.senses[0].definition      	
+            li.appendChild = bold
+            li.appendChild = span
+            ul.appendChild = li
+          }
+        }
+        this.attach.appendChild = ul
+      } else {
+      	this.attach.textContent = "oops, no data loaded!"
+      }
+    }
+  }
+  
+  methods.init()
+  
+}()

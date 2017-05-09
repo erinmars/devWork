@@ -1,0 +1,29 @@
+{
+  "name": "my-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/davemo/fem-grunt-workflow",
+  "authors": [
+    "David Mosher <davidmosher@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "base64js": "~1.0.0",
+    "jquery": "~1.8.2",
+    "underscore": "~1.4.3",
+    "extend.js": "https://github.com/searls/extend.js/releases/download/0.1.0/extend.js",
+    "backbone-fixins.js": "https://raw.github.com/testdouble/backbone-fixins/master/dist/backbone-fixins.js",
+    "backbone.stickit": "~0.6.2",
+    "backbone": "~0.9.10",
+    "underscore.string": "~2.3.0",
+    "handlebars": "~1.0.0"
+  }
+}
