@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="select-style semi-square">
+            <form id="blends-options">
+                <select class="blends-select" name="Composite Blends">
+                  <option disabled selected value> -- select an option -- </option>
+                </select>
+            </form>
+        </div>
+
+        <div class="clear-btn">Clear Drawing</div>
+        <div class="color-picker">
+            <div>Change Background Color</div>
+            <input id="background-color" type="color" value="#ff0000" />
+            <label for="chosen-color">You have choosen:</label>
+            <input id="chosen-color" type="text" readonly="" value="#ff0000" />
+        </div>
+    </header>
+
+    <canvas id="draw" width="800" height="800"></canvas>
+
+    <script>
+        const blends = ["source-over", "source-in", "source-out", "source-atop",
+            "destination-over", "destination-in", "destination-out", "destination-atop",
+            "lighter", "copy", "xor", "multiply", "screen", "overlay", "darken", "lighten",
+            "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion",
+            "hue", "saturation", "color", "luminosity"
+        ];
+
+        const canvas = document.querySelector('#draw');
+        //you need the context to draw on - 2d or 3d
+        const ctx = canvas.getContext('2d');
+        const searchInput = document.querySelector('.search');
+        const suggestions = document.querySelector('.suggestions');
+
+        let blends_options = document.querySelector('#blends-options');
+        let blends_select = document.querySelector('.blends-select');
+
+
+        //es6 new loop syntax
+        for (var value of blends) {
+            blends_select.innerHTML += `<option value="${value}">${value}</option>`;
+        }
+
+        // console.log(blends);
+
+        function findMatches(wordToMatch, blends) {
+
+            return blends.filter(blend => {
+                //here we need to figure out if the blend matches what was searched
+                const regex = new RegExp(wordToMatch, 'gi') // case-insensitive global lookup
+                return blend.match(regex);
+            });
+        }
+
+        function displayMatches() {
+            //find matches in blends array for whatever got typed into the box
+            const matchArray = findMatches(this.value, blends);
+            console.log(matchArray, this.value);
+            const html = matchArray.map(blend => {
+                //create a regex and replace that with the span to put the highlight
+                const regex = new RegExp(this.value, 'gi');
+                const blendName = blend.replace(regex, `<span class="highlight">${this.value}</span>`);
+
+                return `
+                    <li>
+                      <span class="name">${blendName}</span>
+                    </li>
+                  `;
+            }).join('');
+            // turns the arry w/ multiple items into one long string
+            suggestions.innerHTML = html;
+
+        };
+
+        // searchInput.addEventListener('change', displayMatches);
+        // searchInput.addEventListener('keyup', displayMatches);
+
+        //now, size the canvas to be the exact size of the window - overrides
+        // the element's width/height
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        //base settings for the drawing
+        ctx.strokeStyle = '#BADA55';
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 100;
+        // this is a photo-shoppy blend effect - ie: multiply, overlay, etc
+        ctx.globalCompositeOperation = 'color';
+        //set a flag we can toggle if the mouse is down and dragging.
+        let isDrawing = false;
+        //when you draw to a canvas - you need a start and end x / y.
+        //and an ending x/y (start and stop)
+        //these vars - where do you start the line from,
+        //where you finish is the end.
+        let lastX = 0;
+        let lastY = 0;
+        let hue = 0;
+        let direction = true;
+
+        //create the blends dropdown
+        blends_select.onchange = function() {
+            ctx.globalCompositeOperation = this.options[this.selectedIndex].text;
+            console.log("CHANGE", this.options[this.selectedIndex].text)
+        };
+        let background_color = document.querySelector('#background-color');
+        let chosen_color = document.querySelector('#chosen-color');
+
+        //handle background color update
+        background_color.onchange = function() {
+            chosen_color.value = background_color.value;
+            document.getElementsByTagName('html')[0].style.background = background_color.value;
+        };
+
+        function draw(e) {
+            if (!isDrawing) return; // stop the fn from running when they're not mousedown
+
+            //console.log(e);
+            ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+            ctx.beginPath(); //start w/ x/y, move x/y
+            //start from...
+            ctx.moveTo(lastX, lastY);
+            //go too...
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            //after you draw, update the lastX and Y
+            //es6 goodness - destructuring an array - set both vars in one line
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+            //increment the hue to change the hsl as you draw.
+            hue++;
+            //reset hue after 360
+            (hue >= 360) ? hue: 0;
+            //to vary the linewidth - for every loop, increment the line width
+
+            if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+                //flip the direction boolean
+                direction = !direction;
+            }
+            //increment or decrement depending on direction
+            (direction) ? ctx.lineWidth++: ctx.lineWidth--;
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            //update the lastX,lastY so that it's a continuous line - doesn't start and stop
+            //so, before we handle mousemove, update the coordinates...
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+
+        canvas.addEventListener('mousemove', draw, false);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        //you might be down, then leave the screen and comeback, so kill it.
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+Name            Rank Description
+==============  ==== ============================================
+Dom Rightclick   1   Very talented.  Seemed like a good teammate.
+Stack Trace      2   He was awesome although quite verbose.
+Dee Bugger       3   No way.  Brought 2 harmonicas to interview.
+
+K-12 market elementary technology content tools and templates.
+
+Chris: we support 1 project.
+Not the most advanced in technology: HTML, JS, CSS, JQUERY - client side
+2 other hobby projects: CMS
+1 = unity
+
+Questions: 
+--------------------- JOB and Day to Day -------------------------
+
+What are common tasks at your job? 
+What project are you working on now?
+
+What interests you about this position?
+
+Which frameworks are you most familiar with?
+
+Describe a time when you may have deployed a blocker defect to PRODUCTION?
+
+Describe a time when you had to resolve a conflict with another member on your team?
+
+--------------------- AGILE -------------------------
+
+Do you work in AGILE, if so, how long are your sprints and what tools do you use for tracking your iteration?
+How big is your team? 
+
+Name some main characteristic of agile methodology from your point of view? 
+
+What do you think your daily activities and challenges will be in this position? 
+
+--------------------- WEB accessibility -------------------------
+
+ - aria- and labeling.
+Can you give me an example of an aria-role?
+
+--------------------- CSS and compilers -------------------------
+What's an ID vs a class
+What is css?
+
+--------------------- EVENT BUBBLING -------------------------
+
+Describe what event bubbling is. 
+https://javascript.info/bubbling-and-capturing
+Let's say you have a span in a div, in another div...
+
+When an event happens on an element, it first runs the handlers on it, then on its parent, 
+then all the way up on other ancestors.
+
+Bubbling and capturing lay the foundation for “event delegation” – 
+an extremely powerful event handling pattern.
+
+The standard DOM Events describes 3 phases of event propagation:
+
+Capturing phase – the event goes down to the element.
+Target phase – the event reached the target element.
+Bubbling phase – the event bubbles up from the element.
+
+What is the js event queue or loop - 
+
+--------------------- RESTful API-------------------------
+What is a RESTful Web service?
+REST stands for Representation State Transfer, and architectural style
+that has largely been adopted as a best practice for build web and mobile apps.
+RESTful services are designed to be lightweight, easy to maintain and scalable
+They are typically based on the HTTP protocol, and make explicit use of 
+HTTP Methods: GET, POST, PUT, DELETE, are stateless and use intuitive URIs, and 
+transfer XML/JSON data between the server and the client.
+
+Name 2 HTTP methods used in REST? GET PUT DELETE POST
+
+--------------------- PROMISE API-------------------------
+Are you familiar with the Javascript PROMISE API?
+
+A promise is an object that may produce a single value some time in the future: either a resolved value, 
+or a reason that it’s not resolved (e.g., a network error occurred).
+
+Name a method of the Promise API? 
+.then(...the thing came back, now do the next thing) 
+.all( handle a batch of promises)
+What are the arguments of a Promise constructor? promise = new Promise(response,){
+
+}
+
+A promise may be in one of 3 possible states: fulfilled, rejected, or pending. 
+Promise users can attach callbacks to handle the fulfilled value or the reason for rejection.
+
+Promises are eager, meaning that a promise will start doing whatever task you give it as 
+soon as the promise constructor is invoked. If you need lazy, check out observables or tasks.
+
+Promise or “thenable” is an object that supplies a standard-compliant .then() method.
+A pending promise may transition into a fulfilled or rejected state.
+A fulfilled or rejected promise is settled, and must not transition into any other state.
+Once a promise is settled, it must have a value (which may be undefined). That value must not change.
+
+--------------------- JAVASCRIPT Functional Programming -------------------------
+
+is the process of building software by composing pure functions, avoiding shared state, mutable data, and side-effects. Functional programming is declarative rather than imperative, and application state flows through pure functions. Contrast with object oriented programming, where application state is usually shared and colocated with methods in objects.
+
+Functional code tends to be more concise, more predictable, and easier to test than imperative or object oriented code — but if you’re unfamiliar with it and the common patterns associated with it, functional code can also seem a lot more dense, and the related literature can be impenetrable to newcomers.
+
+Pure functions
+Given the same inputs, always returns the same output, and
+Has no side-effects
+
+Function composition
+is the process of combining two or more functions in order to produce a new function or perform some computation. For example, the composition f . g (the dot means “composed with”) is equivalent to f(g(x)) in JavaScript. Understanding function composition is an important step towards understanding how software is constructed using the functional programming. Read “What is Function Composition?” for more.
+
+Avoid shared state
+Avoid mutating state
+Avoid side effects
+
+--------------------- JAVASCRIPT & ES6 -------------------------
+
+Declaring a var: ES6 let and const - describe the diff between var, let and const.
+What is the scope of the variable declared with var - scoped to the function.
+
+let and const are block scope, which means any time you’ve got a set of curly brackets you have block scope.
+In summary, var is function-scoped and let is block-scoped.
+
+you can only declare a variable inside of its scope once.
+
+can you describe the template literal/ template strings?
+Template literals are string literals allowing embedded expressions. 
+You can use multi-line strings and string interpolation features with them. 
+They were called "template strings" in prior editions of the ES2015 specification.
+
+When you pass params to a function - are they are reference or a value.
+
+*********************** ARROW FUNCTIONS *********************
+
+No Binding of this.
+
+--------------------- JAVASCRIPT: By Value vs By Reference -------------------------
+
+In JavaScript, as in all programming languages, there are three important ways that you can 
+manipulate a data value. First, you can copy it; for example, by assigning it to a new variable. 
+econd, you can pass it as an argument to a function or method. Third, you can compare it with 
+another value to see if the two values are equal. To understand any programming language, 
+you must understand how these three operations are performed in that language.
+
+There are two fundamentally distinct ways to manipulate data values. 
+These techniques are called "by value" and "by reference." When a value is manipulated by value, 
+it is the value of the datum that matters. 
+
+In an assignment, a copy of the actual value is made and 
+that copy is stored in a variable, object property, or array element; the copy and the original are 
+two totally independent values that are stored separately. When a datum is passed by value to a function, 
+a copy of the datum is passed to the function; if the function modifies the value, the change affects 
+only the function's copy of the datum -- it does not affect the original datum. Finally, when a datum 
+is compared by value to another datum, the two distinct pieces of data must represent exactly the same 
+value (which usually means that a byte-by-byte comparison finds them to be equal).
+
+The other way of manipulating a value is by reference. 
+With this technique, there is only one actual copy of the value; references to that value are 
+manipulated.[42] If a value is manipulated by reference, variables do not hold that value directly; 
+they hold only references to it. It is these references that are copied, passed, and compared. 
+
+So, in an assignment made by reference, it is the reference to the value that is assigned, not a copy 
+of the value and not the value itself. After the assignment, the new variable refers to the same 
+value that the original variable refers to. Both references are equally valid and both can be used 
+to manipulate the value -- if the value is changed through one reference, that change also appears 
+through the original reference. 
+
+If you pass an array to a function - it is passed by reference by default. 
+Actually, any non primitive object is passed by reference.
+
+First, just to get them out of the way, primitives (Number, String, etc) are always pass-by-value.
+function changeValue(toChange) {  
+    toChange = 2;
+}
+
+var num = 1;  
+console.log(num);  
+changeValue(num);  
+console.log(num);
+
+// Output:
+// 1
+// 1
+
+passing an object: pass by reference because we're able to change the object elements value:
+function changeValue(toChange) {  
+    toChange.value = 2;
+}
+
+var obj = {value: 1};  
+console.log(obj.value);  
+changeValue(obj);  
+console.log(obj.value);
+
+// Output:
+// 1
+// 2
+
+Well, now that you're convinced Javascript is pass-by-reference, look at this:
+
+function changeValue(toChange) {  
+    toChange = {value: 2};
+}
+
+var obj = {value: 1};  
+console.log(obj.value);  
+changeValue(obj);  
+console.log(obj.value);
+
+// Output:
+// 1
+// 1
+Whaaat? In this case, we've assigned a new object to toChange. In pass-by-reference, 
+one would expect obj to reflect this change, but it does not. What in the world... ?
+
+So, here's what's happening: Javascript is actually passing a reference to obj by value. 
+(Say that again...?) Javascript is effectively copying the reference, not the referred-to object. 
+When you call changeValue(obj), you're creating two (completely independent) references to the same object.
+ Outside of the function, you have obj, and inside the function, you have toChange. 
+ They both refer to the same object in memory, but the reference variables themselves are independent.
+
+That means that if you modify an individual property, you'll be dereferencing the actual object, 
+and you'll be modifying the property directly on the object itself. That's why, in the first example, 
+the outer obj variable reflects the change to the inner toChange variable.
+
+--------------------- PSUEDOCODE -------------------------
+Read your resume as text. Read the text file, print a report that list every word and how many times it appears.
+
+conditions - read in the file, split the words strings " " and push into the words array.
+create the word-bank object, then add the word to the object and increment that word's counter.
+print.
+
+bullet - 
+
+
+
+

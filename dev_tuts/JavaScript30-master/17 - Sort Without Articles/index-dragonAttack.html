@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dragon Attack</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        #bands {
+            list-style: inside square;
+            font-size: 20px;
+            background: white;
+            width: 500px;
+            margin: auto;
+            padding: 0;
+            box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        #bands li {
+            border-bottom: 1px solid #efefef;
+            padding: 20px;
+        }
+        
+        #bands li:last-child {
+            border-bottom: 0;
+        }
+        
+        a {
+            color: #ffc600;
+            text-decoration: none;
+        }
+    </style>
+
+    <ul id="bands"></ul>
+
+    <script>
+        const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+        const bands_el = document.querySelector('#bands');
+
+
+        //don't print the A, The, And or An
+        function strip(bandName) {
+            return bandName.replace(/^(a |the |an )/i, '').trim();
+        };
+
+        //sort compares 2 items - after sorting, 
+        //wrap these items in the strip function bc you are putting them into a list.
+        const sortedBands = bands.sort((a, b) => (strip(a) > strip(b)) ? 1 : -1);
+
+        const the_list = sortedBands.forEach(band => {
+            return `<li>${band}</li>`;
+        });
+
+        const dragonEvents = [{
+            type: 'attack',
+            value: 12,
+            target: 'player-dorkman'
+        }, {
+            type: 'yawn',
+            value: 40
+        }, {
+            type: 'eat',
+            target: 'horse'
+        }, {
+            type: 'attack',
+            value: 23,
+            target: 'player-fluffykins'
+        }, {
+            type: 'attack',
+            value: 12,
+            target: 'player-dorkman'
+        }, ];
+
+        const reduceTotal = (prev, x) => (prev || 0) + x;
+        
+        const totalDamageOnDorkman = dragonEvents
+            .filter(e => e.type === 'attack')
+            .filter(e => e.target === 'player-dorkman')
+            .map(e => e.value)
+            .reduce(reduceTotal);
+
+        console.log(totalDamageOnDorkman);
+
+        /*const totalDamageOnDorkman2 = () => {
+            let damage = 0;
+            for (let value of dragonEvents) {
+                if (value.target === 'player-dorkman') {
+                    damage += value.value;
+                }
+            }
+
+            return damage;
+        };
+
+        totalDamageOnDorkman2();*/
+
+
+        /*This does not mean you should use Maps everywhere. If you're not sure which one to use, ask yourself the following questions:
+
+                        Are keys usually unknown until run time? Do you need to look them up dynamically?
+                        Do all values have the same type? Can they be used interchangeably?
+                        Do you need keys that aren't strings?
+                        Are key-value pairs frequently added or removed?
+                        Do you have an arbitrary (easily changing) number of key-value pairs?
+                        Is the collection iterated?
+        
+                        If you answered 'yes' to any of those questions, that is a sign that you might want to use 
+                        a Map. Contrariwise, if you have a fixed number of keys, operate on them individually, 
+                        or distinguish between their usage, then you probably want to use an Object.*/
+
+        bands_el.innerHTML =
+            sortedBands.map(band => `<li>${band}</li>`).join('');
+
+        //console.log(sortedBands);
+    </script>
+
+
+
+</body>
+
+</html>
