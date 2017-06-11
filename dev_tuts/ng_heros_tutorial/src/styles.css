@@ -1,0 +1,28 @@
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+}
+
+.hotspot-identifier .pop-up .close:before {
+    color: #bdd186;
+}
+
+.dialog-incorrect.text-button-focus,
+.dialog-incorrect {
+    border: 1px solid #f34234;
+}
+
+.result-pop-up.text-button-focus {
+   border: 1px solid #aeaca7;
+    background-color: #f4f2ee;
+    -webkit-box-shadow: 0 2px 4px #bdb5b5;
+    -moz-box-shadow: 0 2px 4px #bdb5b5;
+    box-shadow: 0 2px 4px #bdb5b5;
+}
+
+.text-button-focus, .text-button-focus:focus {
+		-webkit-box-shadow: 0 0 13px #87acd1, inset 0 0 0 2px #87acd1;
+		   -moz-box-shadow: 0 0 13px #87acd1, inset 0 0 0 2px #87acd1;
+				box-shadow: 0 0 13px #87acd1, inset 0 0 0 2px #87acd1;
+		}
