@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>let and const</title>
+    <meta charset="UTF-8">
+    <title>let and const</title>
 </head>
+
 <body>
-<script>
-  const key = 'abc123';
-  let points = 50;
-  let winner = false;
+    <script>
+        // vars can be reassigned and even have more than one instance though that's not right
+        //scoping - var variables are function scope - or globally scope...not available outside of the gates.
+        //here's where it comes back to bite us
+        // dogYears gets hoisted to the next up parent function - window or function.
+        // let / const is block scoped
+        //let and const will not work if you duplicate - saves on bugs. It will work if you have 2 named the same, but
+        //scoped in different blocks.
+        //cannot update a const variable, let, you can.
+        // const IS immutable. but cannot be reassigned.
+        //attributes change, but the top level obj doesn't change
 
-  const person = {
-    name: 'Wes',
-    age: 28
-  }
+        //there is an Object.freeze() - now you cannot change any part of the obj.
 
-  const wes = Object.freeze(person);
+        var age = 200;
+        if (age > 12) {
+            var dogYears = age * 7;
+            console.log(`you are ${dogYears} dog years old`);
+        }
+        var width = 100;
+        const key = 'abc123';
+        let points = 50;
+        let winner = false;
 
-</script>
+        const person = {
+            name: 'Wes',
+            age: 28
+        }
+
+        const wes = Object.freeze(person);
+    </script>
 </body>
+
 </html>

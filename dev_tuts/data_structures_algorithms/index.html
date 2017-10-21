@@ -5,9 +5,92 @@
     <meta charset="utf-8">
     <title></title>
     <!-- <link rel="stylesheet" href="style.css">-->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <script src="building_pseudoclass.js">
+    <script>
+        const findAnswer = (ans) => {
+                const arr1 = [1, 2, 3, 4, 5, 6, 7];
+                const len = arr1.length;
+                const mid_index = Math.floor(len / 2);
+
+                let temp_arr = [];
+                let val;
+
+                //while (ans !== )
+
+                if (ans === arr1[mid_index]) {
+                    val = arr1[mid_index];
+                }
+                if (ans > arr1[mid_index]) {
+                    temp_arr = arr1.splice((mid_index + 1), (len - 1));
+                    val = getValue(ans, temp_arr);
+
+                }
+                if (ans < arr1[mid_index]) {
+                    temp_arr = arr1.splice(0, (arr1[mid_index] - 1));
+                }
+                console.log('temp arr', val, arr1[mid_index], temp_arr);
+                return val;
+            }
+            //split the array until the value is found
+            /*  let getValue = (value, arr) => {
+                  let answer;
+                  let arr
+
+                  if () {}
+
+
+              }*/
+
+        //findAnswer(3);
+
+        const bubbleSort = (nums) => {
+            let swapped;
+            do {
+                swapped = false;
+                for (let i = 0; i < nums.length - 1; i++) {
+                    if (nums[i] > nums[i + 1]) {
+                        let temp = nums[i];
+                        nums[i] = nums[i + 1];
+                        nums[i + 1] = temp;
+                        swapped = true;
+                    }
+                }
+            } while (swapped) {
+                console.log(nums);
+            }
+        }
+
+        // var nums = [4, 13, 1, 7, 9]
+        // bubbleSort(nums);
+        /**
+         * the list is divided into 2 sub lists sorted and unsorted
+         * search thru the unsorted list
+         * >> find the smallest element
+         * >> swap
+         * runtime - O(n2)
+         */
+        const selectionSort = (nums) => {
+            let sorted = [];
+            let len = nums.length - 1;
+            for (let j = 0; j < len; j++) {
+                let iMin = j;
+                sorted.push(nums[0]);
+                for (let i = (j + 1); i < (nums.length - 1); i++) {
+                    if (sorted[i] < nums[iMin]) {
+                        iMin = i;
+                        sorted.push(nums[iMin]);
+                        console.log(sorted);
+                    } else {
+                        let temp = sorted.shift(nums[iMin]);
+                        sorted.push(temp);
+                        console.log(sorted);
+                    }
+                }
+
+            }
+        }
+
+        selectionSort([23, 78, 45, 8, 32, 56]);
     </script>
 
 </head>
